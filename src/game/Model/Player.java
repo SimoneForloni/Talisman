@@ -7,8 +7,6 @@ import game.Model.Inventory.*;
 @SuppressWarnings("unused")
 public class Player {
 
-	private static final int MAX_UPGRADE = 10;
-
 	private int maxHp;
 
 	private String name;
