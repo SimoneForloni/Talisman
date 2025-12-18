@@ -2,6 +2,7 @@ package game.service;
 
 import game.Model.*;
 
+@SuppressWarnings("unused")
 public class GameManager {
 	private static GameManager instance;
 	private Player currentPlayer;

@@ -119,18 +119,19 @@ public class Player {
 	// ===========================================================
 
 	/**
-	 * The `heal` function increases the current health points (`hp`) by a specified amount and ensures it
-	 * does not exceed the maximum health points (`maxHp`).
+	 * The `heal` function increases the current health points of an object by a specified amount, up to a
+	 * maximum limit, and throws an exception if the amount is negative.
 	 * 
 	 * @param amount The `amount` parameter in the `heal` method represents the amount of health points
-	 * that will be added to the current health points (`hp`) of an object.
-	 * @return The method is returning the updated value of the "hp" attribute after healing by the
-	 * specified amount.
+	 * that will be added to the current health points (`hp`) of an entity. If the `amount` is negative,
+	 * an `IllegalArgumentException` is thrown with the message "Heal amount cannot be negative". The
+	 * @return The method `heal` is returning the updated value of the `hp` attribute after healing by the
+	 * specified `amount`.
 	 */
 	public int heal(int amount) {
-		this.hp += amount;
-		if (this.hp > maxHp) this.hp = maxHp;
-		return this.hp;
+    if (amount < 0) throw new IllegalArgumentException("Heal amount cannot be negative");
+    this.hp = Math.min(this.hp + amount, maxHp);
+    return this.hp;
 	}
 
 	/**
