@@ -3,7 +3,6 @@ bin/
 out/
 
 # --- File di configurazione dell'IDE ---
-.vscode/
 .settings/
 .classpath
 .project

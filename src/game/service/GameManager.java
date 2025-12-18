@@ -1,4 +1,4 @@
-package game.service;
+package game.Service;
 
 import game.Model.*;
 
