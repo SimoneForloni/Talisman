@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 @SuppressWarnings("unused")
 public class Player {
+
+	private static final int MAX_UPGRADE = 10;
+
+	private int maxHp;
+
 	private String name;
 	private int hp;
 	private int xp;
@@ -24,11 +29,12 @@ public class Player {
 	// ===========================================================
 	// COSTRUTTORI
 	// ===========================================================
-
+	
 	public Player(
 		String name
 	) {
 		this.name = name;
+		this.maxHp = 100;
 		this.hp = 100;
 		this.strength = 1;
 		this.defense = 1;
@@ -39,6 +45,41 @@ public class Player {
 		this.xp = 0;
 		this.xpPoint = 0;
 		this.coins = 0;
+		inventory = new ArrayList<>();
+		spells = new ArrayList<>();
+	}
+
+	public Player(
+		String name,
+		int maxHp,
+		int hp,
+		int strength,
+		int defense,
+		int intelligence,
+		int carisma,
+		int agility,
+		int luck,
+		int xp,
+		int xpPoint,
+		int coins,
+
+		ArrayList<Item> inventory,
+		ArrayList<Spell> spells
+	) {
+		this.name = name;
+		this.maxHp = maxHp;
+		this.hp = 100;
+		this.strength = 1;
+		this.defense = 1;
+		this.intelligence = 1;
+		this.carisma = 1;
+		this.agility = 1;
+		this.luck = 1;
+		this.xp = 0;
+		this.xpPoint = 0;
+		this.coins = 0;
+		this.inventory = inventory;
+		this.spells = spells;
 	}
 
 	// ===========================================================
@@ -77,15 +118,46 @@ public class Player {
 	// METODI DI LOGICA / AZIONI
 	// ===========================================================
 
+	/**
+	 * The `heal` function increases the current health points (`hp`) by a specified amount and ensures it
+	 * does not exceed the maximum health points (`maxHp`).
+	 * 
+	 * @param amount The `amount` parameter in the `heal` method represents the amount of health points
+	 * that will be added to the current health points (`hp`) of an object.
+	 * @return The method is returning the updated value of the "hp" attribute after healing by the
+	 * specified amount.
+	 */
 	public int heal(int amount) {
-		if(hp >= 100 || hp < 1) {
-			return hp;
-		} else {
-			return this.hp += amount;
-		}
-	} 
+		this.hp += amount;
+		if (this.hp > maxHp) this.hp = maxHp;
+		return this.hp;
+	}
 
-	// public int takeDamage(int amount)
-	// public int calculateTotal() 
-	// public boolean isAlive(int hp) 
+	/**
+	 * The `takeDamage` function reduces the object's health points by a specified amount and ensures it
+	 * does not go below zero.
+	 * 
+	 * @param amount The `amount` parameter in the `takeDamage` method represents the amount of damage
+	 * that will be subtracted from the current health points (`hp`) of an object.
+	 * @return The method `takeDamage` returns the updated value of the `hp` variable after deducting the
+	 * specified `amount` of damage.
+	 */
+	public int takeDamage(int amount) {
+		this.hp -= amount;
+		if (this.hp < 0) this.hp = 0;
+		return this.hp;
+	}
+
+	
+	/**
+	 * The function "isAlive" returns true if the object's health points (hp) are greater than 0.
+	 * 
+	 * @return The method isAlive() returns a boolean value indicating whether the object's hp (health
+	 * points) is greater than 0. If the hp is greater than 0, it returns true, indicating that the object
+	 * is alive.
+	 */
+	public boolean isAlive() { 
+		return this.hp > 0;
+	}
+
 }

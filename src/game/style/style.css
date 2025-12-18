@@ -1,170 +1,55 @@
-/* =================================================================
-   BASE E STRUTTURA GENERALE
-   ================================================================= */
+/* Stile per il container principale */
 .root {
-	-fx-background-color: #1e1e1e; /* Sfondo generale molto scuro */
-	-fx-text-fill: #cccccc;
-	-fx-font-family: 'Arial', sans-serif;
+    -fx-background-color: #333333; /* Grigio scuro */
+    -fx-font-family: "Arial";
 }
 
-/* =================================================================
-   AREA TOP (Menu & Stats)
-   ================================================================= */
-.top-panel {
-	-fx-background-color: #2b2b2b; /* Barra superiore leggermente più chiara */
-	-fx-border-color: #000000;
-	-fx-border-width: 0 0 2px 0;
+/* Stile per le label del giocatore */
+.game-label {
+    -fx-text-fill: #FFFFFF; /* Testo bianco */
+    -fx-padding: 5px;
+    -fx-background-color: #555555; /* Sfondo leggermente più chiaro */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
 }
 
-/* Icone principali (☰, 🎒, 📄) */
-.menu-icon {
-	-fx-font-size: 20px;
-	-fx-min-width: 35px;
-	-fx-min-height: 35px;
-	-fx-background-color: #3d3d3d;
-	-fx-text-fill: #ffffff;
+/* Stile per la label di stato */
+.status-message {
+    -fx-text-fill: #E0E0E0; /* Grigio chiaro */
+    -fx-font-size: 16px;
+    -fx-padding: 10px;
+    -fx-background-color: #444444;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-max-width: 400px; /* Limita la larghezza per il wrapText */
 }
 
-/* HBox Statistiche Protagonista */
-.stats-bar-hbox {
-	-fx-background-color: #4a4a4a;
-	-fx-padding: 8px 15px;
-	-fx-background-radius: 5px;
+/* Stile per i pulsanti di gioco */
+.game-button {
+    -fx-font-size: 20px;
+    -fx-background-color: #007BFF; /* Blu */
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
 }
 
-/* Icone Stats (🚶, ☐, ♥) */
-.stats-icon {
-	-fx-font-size: 22px;
-	-fx-text-fill: #ffffff;
+.game-button:hover {
+    -fx-background-color: #0056b3; /* Blu più scuro al passaggio del mouse */
 }
 
-/* Cuori Vita */
-.life-heart-small {
-	-fx-font-size: 20px;
-	-fx-text-fill: #ff4444; /* Rosso vivo */
+/* Stile per i pulsanti di test (più piccoli e meno in evidenza) */
+.test-button {
+    -fx-font-size: 14px;
+    -fx-background-color: #6c757d; /* Grigio medio */
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-cursor: hand;
 }
 
-/* Slot Carte/Oggetti Piccoli */
-.card-slot-small, .object-slot-small, .card-stack-slot {
-	-fx-background-color: #555555;
-	-fx-border-color: #777777;
-	-fx-border-width: 1px;
-	-fx-background-radius: 3px;
-}
-.card-slot-small { -fx-pref-width: 45px; -fx-pref-height: 60px; }
-.object-slot-small { -fx-pref-width: 45px; -fx-pref-height: 45px; }
-.card-stack-slot { -fx-pref-width: 30px; -fx-pref-height: 40px; }
-
-
-/* =================================================================
-   AREA LEFT (Menu Secondario & Mosse)
-   ================================================================= */
-.left-menu-panel {
-	-fx-background-color: #3d3d3d;
-	-fx-border-color: #000000;
-	-fx-border-width: 0 2px 0 0;
-}
-
-.menu-header {
-	-fx-font-size: 18px;
-	-fx-text-fill: #ffd700; /* Giallo Oro */
-	-fx-font-weight: bold;
-}
-
-.menu-secondary-button {
-	-fx-background-color: #5a5a5a;
-	-fx-text-fill: white;
-}
-
-.menu-separator {
-	-fx-background-color: #555555;
-	-fx-pref-height: 2px;
-	-fx-padding: 5px 0;
-}
-
-/* Pulsanti Mosse */
-.move-button-large {
-	-fx-background-color: #556b2f; /* Verde Militare */
-	-fx-text-fill: white;
-	-fx-font-size: 16px;
-	-fx-padding: 10px;
-}
-
-
-/* =================================================================
-   AREA RIGHT (Statistiche Nemico)
-   ================================================================= */
-.right-stats-panel {
-	-fx-background-color: #3d3d3d;
-	-fx-border-color: #000000;
-	-fx-border-width: 0 0 0 2px;
-}
-
-.enemy-card-slot {
-	-fx-background-color: #555555;
-	-fx-border-color: #777777;
-	-fx-border-width: 1px;
-	-fx-pref-width: 120px;
-	-fx-pref-height: 180px;
-	-fx-background-radius: 5px;
-	-fx-alignment: center;
-}
-
-.stat-value-enemy {
-	-fx-text-fill: #ff9999; /* Rosso pallido */
-	-fx-font-size: 14px;
-}
-
-/* =================================================================
-   AREA CENTER (Combattimento & Carte Usabili)
-   ================================================================= */
-.combat-area {
-	-fx-background-color: #555555; /* Sfondo scuro per l'arena */
-}
-
-/* Modelli Personaggi */
-.character-model-large {
-	-fx-font-size: 120px;
-	-fx-text-fill: black;
-	-fx-opacity: 0.8;
-}
-
-/* Barre Vita Rosse */
-.health-bar-full-red {
-	-fx-background-color: red;
-	-fx-pref-width: 120px;
-	-fx-pref-height: 15px;
-	-fx-border-color: black;
-	-fx-border-width: 2px;
-}
-
-/* Barra Input/Messaggi (in fondo all'AnchorPane) */
-.input-bar-bg {
-	-fx-background-color: #777777;
-	-fx-pref-height: 40px;
-}
-
-/* Area Carte Usabili (in fondo al Center) */
-.usable-cards-area {
-	-fx-background-color: #2b2b2b;
-	-fx-border-color: #000000;
-	-fx-border-width: 2px 0 0 0;
-	-fx-padding: 15px 0;
-}
-
-.large-card-slot {
-	-fx-background-color: #555555;
-	-fx-border-color: #999999;
-	-fx-border-width: 2px;
-	-fx-pref-width: 180px;
-	-fx-pref-height: 250px;
-	-fx-background-radius: 8px;
-}
-
-.scroll-button {
-	-fx-font-size: 30px;
-	-fx-background-color: #4a4a4a;
-	-fx-text-fill: white;
-	-fx-min-width: 40px;
-	-fx-min-height: 40px;
+.test-button:hover {
+    -fx-background-color: #5a6268;
 }
