@@ -1,8 +1,8 @@
-package game.Class;
-
-import game.Class.Inventory.*;
+package game.Model;
 
 import java.util.ArrayList;
+
+import game.Model.Inventory.*;
 
 @SuppressWarnings("unused")
 public class Player {
@@ -23,8 +23,8 @@ public class Player {
 	private int luck;
 	private int coins;
 
-	private ArrayList<Item> inventory;
-	private ArrayList<Spell> spells;
+	private ArrayList<InventoryObject> inventory;
+	private ArrayList<InventoryObject> spells;
 
 	// ===========================================================
 	// COSTRUTTORI
@@ -63,8 +63,8 @@ public class Player {
 		int xpPoint,
 		int coins,
 
-		ArrayList<Item> inventory,
-		ArrayList<Spell> spells
+		ArrayList<InventoryObject> inventory,
+		ArrayList<InventoryObject> spells
 	) {
 		this.name = name;
 		this.maxHp = maxHp;

@@ -1,7 +1,7 @@
-package game.Class.Inventory;
+package game.Model.Inventory;
 
 // @SuppressWarnings("unused")
-public class Item {
+public class InventoryObject {
   private String name;
   private String description;
   private String type; // Es: "Arma", "Armatura", "Oggetto"
@@ -11,7 +11,7 @@ public class Item {
   // COSTRUTTORI
   // ===========================================================
 
-  public Item(String name, String description, String type, int bonusValue) {
+  public InventoryObject(String name, String description, String type, int bonusValue) {
     this.name = name;
     this.description = description;
     this.type = type;

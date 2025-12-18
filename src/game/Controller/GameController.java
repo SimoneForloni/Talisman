@@ -1,4 +1,4 @@
-package game;
+package game.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-public class Controller {
+public class GameController {
 	
 	// ******************************************************
 	// CAMPI INIETTATI (fx:id) - Devono corrispondere all'FXML
