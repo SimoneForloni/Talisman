@@ -1,4 +1,4 @@
-package game.Util;
+package game.util;
 
 @SuppressWarnings("unused")
 public class Constants {

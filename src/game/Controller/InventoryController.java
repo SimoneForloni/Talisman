@@ -1,4 +1,4 @@
-package game.Controller;
+package game.controller;
 
 public class InventoryController {
   

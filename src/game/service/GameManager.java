@@ -1,6 +1,6 @@
-package game.Service;
+package game.service;
 
-import game.Model.*;
+import game.model.*;
 
 @SuppressWarnings("unused")
 public class GameManager {

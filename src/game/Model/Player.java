@@ -1,8 +1,8 @@
-package game.Model;
+package game.model;
 
 import java.util.ArrayList;
 
-import game.Model.Inventory.*;
+import game.model.Inventory.*;
 
 @SuppressWarnings("unused")
 public class Player {

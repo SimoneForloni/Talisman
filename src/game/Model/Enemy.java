@@ -1,4 +1,4 @@
-package game.Model;
+package game.model;
 
 public class Enemy {
   

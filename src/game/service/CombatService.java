@@ -1,4 +1,4 @@
-package game.Service;
+package game.service;
 
 public class CombatService {
   
