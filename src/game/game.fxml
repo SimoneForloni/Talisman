@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="1000.0" maxWidth="1920.0" prefHeight="1000.0" prefWidth="1920.0" 
+			stylesheets="@style/style.css" 
+			xmlns="http://javafx.com/javafx/25" 
+			xmlns:fx="http://javafx.com/fxml/1" 
+			fx:controller="game.Controller">
+	
+	<top>
+		<HBox fx:id="topPanel" alignment="CENTER_LEFT" spacing="15" styleClass="top-panel">
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10"/>
+			</padding>
+			
+			<VBox fx:id="mainMenuVBox" spacing="5" alignment="CENTER_LEFT">
+				<Button text="☰" styleClass="icon-button menu-icon" />
+				<Button text="🎒" styleClass="icon-button menu-icon" />
+				<Button text="📄" styleClass="icon-button menu-icon" />
+			</VBox>
+
+			<Region HBox.hgrow="ALWAYS" /> <HBox fx:id="playerStatsBarHBox" alignment="CENTER" spacing="20" styleClass="stats-bar-hbox">
+				<Label text="🚶" styleClass="stats-icon" />
+				<Label text="☐" styleClass="stats-icon" />
+				<Label text="♥" styleClass="stats-icon" />
+				<HBox spacing="5" fx:id="lifeDisplayHBox">
+					<Label text="♥" styleClass="life-heart-small" />
+					<Label text="♥" styleClass="life-heart-small" />
+					<Label text="♥" styleClass="life-heart-small" />
+				</HBox>
+				<Pane styleClass="card-stack-slot" />
+			</HBox>
+			
+			<Region HBox.hgrow="ALWAYS" /> <VBox fx:id="cardsVBox" spacing="5" alignment="CENTER_RIGHT">
+				<HBox spacing="5">
+					<Pane styleClass="card-slot-small" />
+					<Pane styleClass="card-slot-small" />
+				</HBox>
+				<HBox spacing="5">
+					<Pane styleClass="object-slot-small" />
+					<Pane styleClass="object-slot-small" />
+				</HBox>
+			</VBox>
+		</HBox>
+	</top>
+
+	<center>
+		<VBox fx:id="centerVBox">
+			<AnchorPane fx:id="combatAreaAnchorPane" VBox.vgrow="ALWAYS" styleClass="combat-area">
+				
+				<Pane styleClass="health-bar-full-red" AnchorPane.leftAnchor="150" AnchorPane.topAnchor="180"/>
+				<Label text="🧍" styleClass="character-model-large" AnchorPane.leftAnchor="150" AnchorPane.bottomAnchor="150"/>
+
+				<Pane styleClass="health-bar-full-red" AnchorPane.rightAnchor="150" AnchorPane.topAnchor="180"/>
+				<Label text="🗡️" styleClass="character-model-large" AnchorPane.rightAnchor="150" AnchorPane.bottomAnchor="150"/>
+				
+				<Pane styleClass="input-bar-bg" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="200" AnchorPane.rightAnchor="200" />
+			</AnchorPane>
+			
+			<HBox fx:id="usableCardsHBox" prefHeight="150" alignment="CENTER" spacing="10" styleClass="usable-cards-area">
+				<Button text="&lt;" styleClass="scroll-button" />
+				<Pane styleClass="large-card-slot" />
+				<Pane styleClass="large-card-slot" />
+				<Pane styleClass="large-card-slot" />
+				<Button text="&gt;" styleClass="scroll-button" />
+			</HBox>
+		</VBox>
+	</center>
+	
+	<left>
+		<VBox fx:id="leftMenuVBox" prefWidth="150" spacing="10" styleClass="left-menu-panel">
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10"/>
+			</padding>
+			<Label text="Opzioni" styleClass="menu-header"/>
+			<Button text="Volume" prefWidth="Infinity" styleClass="menu-secondary-button"/>
+			<Button text="Tasti" prefWidth="Infinity" styleClass="menu-secondary-button"/>
+			
+			<Separator styleClass="menu-separator"/>
+			
+			<Label text="Mosse" styleClass="menu-header"/>
+			<VBox fx:id="moveListVBox" spacing="5">
+				<Button text="Attacco" prefWidth="Infinity" styleClass="move-button-large"/>
+				<Button text="Consumabili" prefWidth="Infinity" styleClass="move-button-large"/>
+				<Button text="Fuga" prefWidth="Infinity" styleClass="move-button-large"/>
+			</VBox>
+		</VBox>
+	</left>
+
+	<right>
+		<VBox fx:id="enemyStatsVBox" prefWidth="150" spacing="10" styleClass="right-stats-panel">
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10"/>
+			</padding>
+			<Label text="NEMICO" styleClass="menu-header"/>
+			<Pane styleClass="enemy-card-slot"/>
+			<Label text="FORZA: 5" styleClass="stat-value-enemy"/>
+			<Label text="DADI: 1" styleClass="stat-value-enemy"/>
+		</VBox>
+	</right>
+</BorderPane>
