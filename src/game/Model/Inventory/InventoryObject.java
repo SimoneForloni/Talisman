@@ -1,4 +1,4 @@
-package game.model.Inventory;
+package game.model.inventory;
 
 // @SuppressWarnings("unused")
 public class InventoryObject {

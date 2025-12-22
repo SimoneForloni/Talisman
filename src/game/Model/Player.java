@@ -2,7 +2,7 @@ package game.model;
 
 import java.util.ArrayList;
 
-import game.model.Inventory.*;
+import game.model.inventory.*;
 
 @SuppressWarnings("unused")
 public class Player {
@@ -66,16 +66,16 @@ public class Player {
 	) {
 		this.name = name;
 		this.maxHp = maxHp;
-		this.hp = 100;
-		this.strength = 1;
-		this.defense = 1;
-		this.intelligence = 1;
-		this.carisma = 1;
-		this.agility = 1;
-		this.luck = 1;
-		this.xp = 0;
-		this.xpPoint = 0;
-		this.coins = 0;
+		this.hp = hp;
+		this.strength = strength;
+		this.defense = defense;
+		this.intelligence = intelligence;
+		this.carisma = carisma;
+		this.agility = agility;
+		this.luck = luck;
+		this.xp = xp;
+		this.xpPoint = xpPoint;
+		this.coins = coins;
 		this.inventory = inventory;
 		this.spells = spells;
 	}
