@@ -1,0 +1,61 @@
+/* Stile globale */
+.root {
+  -fx-font-family: "Segoe UI", Arial, sans-serif;
+  -fx-background-color: #1a1a1a;
+}
+
+/* Pulsanti */
+.button {
+  -fx-background-color: #4a4a4a;
+  -fx-text-fill: white;
+  -fx-background-radius: 5;
+  -fx-cursor: hand;
+  -fx-font-size: 13px;
+}
+
+.button:hover {
+  -fx-background-color: #5a5a5a;
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
+}
+
+.button:pressed {
+  -fx-background-color: #3a3a3a;
+}
+
+/* Toolbar */
+.tool-bar {
+  -fx-background-color: #2b2b2b;
+  -fx-border-color: #3a3a3a;
+  -fx-border-width: 0 0 1 0;
+}
+
+/* Label */
+.label {
+  -fx-text-fill: white;
+}
+
+/* Separator */
+.separator {
+  -fx-background-color: #4a4a4a;
+}
+
+/* ScrollPane */
+.scroll-pane {
+  -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+  -fx-background-color: transparent;
+}
+
+/* VBox, HBox */
+.vbox,
+.hbox {
+  -fx-background-color: transparent;
+}
+
+/* AnchorPane */
+.anchor-pane {
+  -fx-background-color: #2b2b2b;
+}

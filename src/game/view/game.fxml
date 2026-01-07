@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" 
+			xmlns:fx="http://javafx.com/fxml/1" 
+			fx:controller="game.controller.GameController"
+			stylesheets="@style.css">
+	
+	<!-- TOOLBAR SUPERIORE -->
+	<top>
+		<ToolBar fx:id="mainToolbar">
+			<Button text="🎒 Inventario" onAction="#handleOpenInventory"/>
+			<Separator orientation="VERTICAL"/>
+			<Button text="🚪 Esci" onAction="#handleExitGame"/>
+		</ToolBar>
+	</top>
+	
+	<!-- PANNELLO CENTRALE -->
+	<center>
+		<BorderPane>
+			<!-- Area di combattimento / gioco principale -->
+			<center>
+				<AnchorPane fx:id="combatAreaAnchorPane" style="-fx-background-color: #2b2b2b;">
+					<VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="0" 
+						  AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" 
+						  AnchorPane.rightAnchor="0">
+						
+						<!-- Statistiche nemico (visibile solo in combattimento) -->
+						<VBox fx:id="enemyStatsVBox" alignment="CENTER" spacing="10" 
+							  visible="false" managed="false"
+							  style="-fx-background-color: rgba(139, 0, 0, 0.3); -fx-padding: 15; -fx-background-radius: 10;">
+							<Label text="NEMICO" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ff6b6b;"/>
+							<Label fx:id="enemyNameLabel" text="Nome Nemico" style="-fx-font-size: 16px; -fx-text-fill: white;"/>
+							<HBox spacing="15" alignment="CENTER">
+								<Label fx:id="enemyHpLabel" text="❤ HP: 0" style="-fx-text-fill: #ff6b6b;"/>
+								<Label fx:id="enemyAttackLabel" text="⚔ ATK: 0" style="-fx-text-fill: #ffd93d;"/>
+								<Label fx:id="enemyDefenseLabel" text="🛡 DEF: 0" style="-fx-text-fill: #95e1d3;"/>
+							</HBox>
+						</VBox>
+						
+						<!-- Label di stato -->
+						<Label fx:id="statusLabel" 
+							   text="Benvenuto nel Talisman. Tocca al Giocatore 1. Lancia il Dado!"
+							   wrapText="true" 
+							   style="-fx-font-size: 18px; -fx-text-fill: white; -fx-text-alignment: center;"
+							   maxWidth="600"/>
+						
+						<!-- Pulsanti azione -->
+						<HBox spacing="15" alignment="CENTER">
+							<Button fx:id="rollDiceButton" text="🎲 Lancia il Dado" 
+									onAction="#handleRollDice" 
+									style="-fx-font-size: 14px; -fx-padding: 10 20;"/>
+							<Button fx:id="attackButton" text="⚔ Attacca" 
+									onAction="#handleAttack" 
+									visible="false" managed="false"
+									style="-fx-font-size: 14px; -fx-padding: 10 20;"/>
+							<Button fx:id="defendButton" text="🛡 Difendi" 
+									onAction="#handleDefend" 
+									visible="false" managed="false"
+									style="-fx-font-size: 14px; -fx-padding: 10 20;"/>
+							<Button fx:id="fleeButton" text="🏃 Fuggi" 
+									onAction="#handleFlee" 
+									visible="false" managed="false"
+									style="-fx-font-size: 14px; -fx-padding: 10 20;"/>
+						</HBox>
+					</VBox>
+				</AnchorPane>
+			</center>
+			
+			<!-- Pannello statistiche giocatore (in basso) -->
+			<bottom>
+				<HBox fx:id="playerStatsBarHBox" spacing="20" alignment="CENTER" 
+					  style="-fx-background-color: #1a1a1a; -fx-padding: 15;">
+					<Label fx:id="playerNameLabel" text="👤 Giocatore" style="-fx-font-size: 14px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+					<Separator orientation="VERTICAL"/>
+					<Label fx:id="playerHpLabel" text="❤ HP: 100/100" style="-fx-font-size: 14px; -fx-text-fill: #ff6b6b;"/>
+					<Label fx:id="playerStrengthLabel" text="💪 STR: 1" style="-fx-font-size: 14px; -fx-text-fill: #ffd93d;"/>
+					<Label fx:id="playerDefenseLabel" text="🛡 DEF: 1" style="-fx-font-size: 14px; -fx-text-fill: #95e1d3;"/>
+					<Separator orientation="VERTICAL"/>
+					<Label fx:id="playerXpLabel" text="⭐ XP: 0" style="-fx-font-size: 14px; -fx-text-fill: #a8e6cf;"/>
+					<Label fx:id="playerCoinsLabel" text="💰 Coins: 0" style="-fx-font-size: 14px; -fx-text-fill: #ffd700;"/>
+					<Separator orientation="VERTICAL"/>
+					<Label fx:id="positionLabel" text="📍 Posizione: 0" style="-fx-font-size: 14px; -fx-text-fill: white;"/>
+				</HBox>
+			</bottom>
+		</BorderPane>
+	</center>
+	
+	<!-- MENU LATERALE SINISTRO (opzionale) -->
+	<left>
+		<VBox fx:id="leftMenuVBox" spacing="10" 
+			  style="-fx-background-color: #1a1a1a; -fx-padding: 10;"
+			  prefWidth="150" visible="false" managed="false">
+			<Label text="MENU" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+			<Button text="Nuovo Gioco" prefWidth="130"/>
+			<Button text="Carica" prefWidth="130"/>
+			<Button text="Opzioni" prefWidth="130"/>
+		</VBox>
+	</left>
+	
+</BorderPane>

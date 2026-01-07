@@ -1,0 +1,17 @@
+# --- Output di compilazione ---
+bin/
+out/
+
+# --- File di configurazione dell'IDE ---
+.settings/
+.classpath
+.project
+
+# --- File temporanei e backup ---
+**/bak/
+*.log
+*.tmp
+
+# --- File di sistema ---
+.DS_Store
+Thumbs.db
