@@ -52,7 +52,7 @@ public class Game {
 
   private void movePlayer() {
     int dice = (int) (Math.random() * 6) + 1;
-    System.out.println("\nResult: " = dice);
+    System.out.println("\nResult: " + dice);
     player.setPosition(player.getPosition() + dice);
     System.out.println("");
   }
