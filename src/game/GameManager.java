@@ -57,11 +57,12 @@ public class GameManager {
 
   private static Player carachterCreator() {
     while (true) {
+      Methods.clearScreen();
       System.out.println("\n=== CHARACTER CREATION ===\n");
 
       String name = askPlayerName();
       if (name == null)
-        return null; // Uscita pulita
+        return null;
 
       System.out.println("\nChoose your class:");
       System.out.println("1) Warrior\n2) Wizard\n3) Thief");
@@ -105,7 +106,7 @@ public class GameManager {
       if (name.length() >= 2 && name.length() <= 20)
         return name;
 
-      System.out.println("Invalid name (must be between 2 and 20 characters).");
+      System.out.println("Invalid name (must be between 2 and 20 characters).\n");
     }
   }
 }

@@ -20,9 +20,9 @@ public class Methods {
         if (n >= min && n <= max)
           return n;
 
-        System.out.printf("Pick a number between %d and %d", min, max);
+        System.out.printf("Pick a number between %d and %d \n", min, max);
       } catch (NumberFormatException e) {
-        System.out.println("Pick a valid number.");
+        System.out.println("Invalid parameter, insert a number.\n");
       }
     }
   }
