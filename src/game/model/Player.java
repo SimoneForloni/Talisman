@@ -185,10 +185,15 @@ public class Player {
 		return characterClass;
 	}
 
-	// Esempio di metodo di utilità per la logica di gioco
-	public void addXp(int amount) {
-		this.xp += amount;
-		// logica per livellare...
+	public void heal(int healthGain) {
+		this.hp = Math.min(maxHp, this.hp + healthGain);
+	}
+
+	public boolean isAlive() {
+		if (this.hp > 0) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
