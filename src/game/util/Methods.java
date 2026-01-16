@@ -7,7 +7,7 @@ public class Methods {
   }
 
   public static void pressEnterToContinue() {
-    System.out.println("Premi INVIO per continuare...");
+    System.out.println("Press ENTER to continue...");
     Constants.scanner.nextLine();
   }
 

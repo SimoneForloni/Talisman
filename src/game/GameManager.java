@@ -1,9 +1,9 @@
 package game;
 
 import game.model.Player;
-import game.util.CharacterClass;
 import game.util.Constants;
 import game.util.Methods;
+import game.util.CharacterClass;
 
 public class GameManager {
 
@@ -17,20 +17,21 @@ public class GameManager {
         case 1 -> {
           createAndStartGame();
         }
-        case 2 -> System.out.println("\n-> Funzionalità Carica non ancora implementata.\n");
-        case 3 -> System.out.println("\n-> Impostazioni non ancora implementate.\n");
+        case 2 -> System.out.println("\n-> Func. load not implemented yet.\n");
+        case 3 -> System.out.println("\n-> Settings not implemented yet.\n");
         case 4 -> {
-          System.out.println("\nArrivederci!");
+          System.out.println("\nGoodbye!");
           running = false;
         }
       }
 
-      if (running && choice != 1) {
+      if (choice != 1) {
         Methods.pressEnterToContinue();
       }
     }
 
     Constants.scanner.close();
+    System.exit(0);
   }
 
   private static int askMenuChoice() {
@@ -50,9 +51,8 @@ public class GameManager {
               2) Load game
               3) Setting
               4) Quit
-
-        Select a option (1-4):
-        """);
+      """);
+    System.out.print("    Select a option (1-4): ");
   }
 
   private static Player carachterCreator() {
@@ -65,7 +65,8 @@ public class GameManager {
         return null;
 
       System.out.println("\nChoose your class:");
-      System.out.println("1) Warrior\n2) Wizard\n3) Thief");
+      System.out.println("\n1) Warrior\n2) Wizard\n3) Thief");
+      System.out.print("\nYour choice: ");
 
       int choice = Methods.readNumber(1, 3);
 
@@ -76,6 +77,7 @@ public class GameManager {
       };
 
       Player p = new Player(name, selectedClass);
+      Methods.clearScreen();
       System.out.println("\nCharacter summary:\n" + p);
 
       System.out.print("Confirm creation? (y/n): ");
@@ -86,6 +88,7 @@ public class GameManager {
       }
 
       System.out.println("\nCreation cancelled. Let's start over...");
+      Methods.pressEnterToContinue();
     }
   }
 

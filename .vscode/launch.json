@@ -6,13 +6,6 @@
 	"configurations": [
 		{
 			"type": "java",
-			"name": "GameManager",
-			"request": "launch",
-			"mainClass": "game.GameManager",
-			"projectName": "tetto_20e41a09"
-		},
-		{
-			"type": "java",
 			"name": "Launch App",
 			"request": "launch",
 			"mainClass": "game.Main",
