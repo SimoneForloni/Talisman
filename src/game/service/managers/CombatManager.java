@@ -24,6 +24,10 @@ public class CombatManager {
       System.out.println("> You roll " + pDice + " and deal " + damageToEnemy + " damage!");
 
       Methods.pressEnterToContinue();
+
+      if (enemy.getHp() <= 0)
+        break;
+
       Methods.clearScreen();
 
       System.out
