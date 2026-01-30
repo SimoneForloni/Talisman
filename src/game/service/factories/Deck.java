@@ -3,6 +3,7 @@ package game.service.factories;
 import java.util.ArrayList;
 import java.util.Random;
 
+import game.service.GameLogger;
 import game.model.Enemy;
 import game.model.StatusEffect;
 import game.model.board.cards.AdventureCard;
@@ -15,9 +16,11 @@ import game.util.Constants;
 public class Deck {
 	private static final Random random = new Random();
 	private ArrayList<AdventureCard> deck;
+	private final GameLogger logger;
 	private int index;
 
-	public Deck() {
+	public Deck(GameLogger logger) {
+		this.logger = logger;
 		this.deck = new ArrayList<>();
 		for (int i = 0; i < Constants.DECK_LENGTH; i++) {
 			deck.add(createRandomCard());
@@ -57,17 +60,17 @@ public class Deck {
 		switch (roll) {
 			case 0:
 				return new EventCard("Poison Trap", p -> {
-					System.out.println("You stepped on a trap!");
+					logger.log("You stepped on a trap!");
 					p.addStatusEffect(StatusEffect.POISONED);
 				});
 			case 1:
 				return new EventCard("Found Gold", p -> {
-					System.out.println("You found a hidden stash!");
+					logger.log("You found a hidden stash!");
 					p.setCoins(p.getCoins() + 5);
 				});
 			default:
 				return new EventCard("Teleport", p -> {
-					System.out.println("A magical wind blows you away!");
+					logger.log("A magical wind blows you away!");
 					p.setPosition(random.nextInt(Constants.BOARD_SIZE));
 				});
 		}

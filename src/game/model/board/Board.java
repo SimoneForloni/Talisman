@@ -5,21 +5,22 @@ import java.util.List;
 
 import game.model.board.spaces.*;
 import game.service.factories.SpaceFactory;
+import game.service.GameLogger;
 import game.service.factories.Deck;
 import game.util.Constants;
 
 public class Board {
   private final List<Space> spaces = new ArrayList<>();
 
-  public Board(Deck deck) {
-    generateBoard(deck);
+  public Board(Deck deck, GameLogger logger) {
+    generateBoard(deck, logger);
   }
 
-  private void generateBoard(Deck deck) {
+  private void generateBoard(Deck deck, GameLogger logger) {
     spaces.add(new VillageSpace());
 
     for (int i = 1; i < Constants.BOARD_SIZE; i++) {
-      spaces.add(SpaceFactory.createRandomSpace(i, deck));
+      spaces.add(SpaceFactory.createRandomSpace(i, deck, logger));
     }
   }
 

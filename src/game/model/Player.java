@@ -23,7 +23,7 @@ public class Player implements Combatant {
 	private int charisma;
 	private int agility;
 	private int luck;
-	
+
 	private List<InventoryObject> inventory;
 	private List<InventoryObject> spells;
 	private List<StatusEffect> statusEffects;
@@ -208,13 +208,11 @@ public class Player implements Combatant {
 	public void addStatusEffect(StatusEffect effect) {
 		if (!statusEffects.contains(effect)) {
 			statusEffects.add(effect);
-			System.out.println(name + " is now " + effect + "!");
 		}
 	}
 
 	public void removeStatusEffect(StatusEffect effect) {
 		statusEffects.remove(effect);
-		System.out.println(name + " is no longer " + effect + ".");
 	}
 
 	@Override

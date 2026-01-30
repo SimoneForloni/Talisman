@@ -4,6 +4,8 @@ import game.model.Player;
 import game.model.board.Board;
 import game.model.board.spaces.Space;
 import game.service.factories.Deck;
+import game.service.ConsoleLogger;
+import game.service.GameLogger;
 import game.util.Constants;
 import game.util.Methods;
 
@@ -11,12 +13,14 @@ public class Game {
   private final Player player;
   private final Board board;
   private final Deck deck;
+  private final GameLogger logger;
   private boolean isRunning;
 
   Game(Player player) {
     this.player = player;
-    this.deck = new Deck();
-    this.board = new Board(deck);
+    this.logger = new ConsoleLogger();
+    this.deck = new Deck(logger);
+    this.board = new Board(deck, logger);
     this.isRunning = false;
   }
 

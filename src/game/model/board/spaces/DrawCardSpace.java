@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import game.model.Player;
+import game.service.GameLogger;
 import game.model.board.cards.AdventureCard;
 import game.model.board.cards.CardType;
 import game.service.factories.Deck;
@@ -12,10 +13,12 @@ public class DrawCardSpace extends Space {
 
 	private static final Random random = new Random();
 	private final Deck deck;
+	private final GameLogger logger;
 
-	public DrawCardSpace(String name, String description, Deck deck) {
+	public DrawCardSpace(String name, String description, Deck deck, GameLogger logger) {
 		super(name, description);
 		this.deck = deck;
+		this.logger = logger;
 	}
 
 	/**
@@ -36,7 +39,7 @@ public class DrawCardSpace extends Space {
 	public void onLand(Player player) {
 		// Decide internamente quante carte pescare (1 o 2)
 		int cardsToDraw = 1 + random.nextInt(3);
-		System.out.printf("Drawing %d Adventure Card(s)...\n", cardsToDraw);
+		logger.log(String.format("Drawing %d Adventure Card(s)...", cardsToDraw));
 
 		List<AdventureCard> drawnCards = new ArrayList<>();
 		for (int i = 0; i < cardsToDraw; i++) {
