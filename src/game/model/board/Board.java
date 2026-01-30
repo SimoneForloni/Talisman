@@ -5,24 +5,21 @@ import java.util.List;
 
 import game.model.board.spaces.*;
 import game.service.factories.SpaceFactory;
+import game.service.factories.Deck;
 import game.util.Constants;
 
 public class Board {
   private final List<Space> spaces = new ArrayList<>();
 
-  public Board() {
-    generateBoard();
+  public Board(Deck deck) {
+    generateBoard(deck);
   }
 
-  private void generateBoard() {
+  private void generateBoard(Deck deck) {
     spaces.add(new VillageSpace());
 
     for (int i = 1; i < Constants.BOARD_SIZE; i++) {
-      if (i > 40) {
-        spaces.add(new DangerSpace("Abissal Wasteladn" + i, "An ancient evil dwells here."));
-      } else {
-        spaces.add(SpaceFactory.createRandomSpace(i));
-      }
+      spaces.add(SpaceFactory.createRandomSpace(i, deck));
     }
   }
 
