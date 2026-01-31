@@ -4,6 +4,7 @@ import game.Game;
 import game.model.Player;
 import game.service.loggers.GameLogger;
 import game.service.loggers.GuiLogger;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -48,42 +49,42 @@ public class GameController {
 		// 2. Crea il gioco iniettando il logger grafico
 		this.game = new Game(player, guiLogger);
 
-		// 3. Aggiorna la GUI inizialmente
-		updateUI();
+		// 3. Data Binding: Collega le proprietà del Player alla GUI
+		nameLabel.setText(player.getName() + " (" + player.getCharacterClass() + ")");
+
+		// Barra della vita: hp / maxHp
+		hpBar.progressProperty().bind(
+				player.hpProperty().divide(player.maxHpProperty().multiply(1.0)));
+
+		// Testo HP: "80/100"
+		hpTextLabel.textProperty().bind(
+				Bindings.concat(player.hpProperty(), "/", player.maxHpProperty()));
+
+		// Monete
+		coinsLabel.textProperty().bind(player.coinsProperty().asString());
+
+		// Disabilita i bottoni se il giocatore è morto (HP <= 0)
+		btnMove.disableProperty().bind(player.hpProperty().lessThanOrEqualTo(0));
+		btnInventory.disableProperty().bind(player.hpProperty().lessThanOrEqualTo(0));
+		btnStats.disableProperty().bind(player.hpProperty().lessThanOrEqualTo(0));
 
 		// 4. Avvia il gioco (messaggio di benvenuto)
 		game.start();
 	}
 
-	private void updateUI() {
-		if (player != null) {
-			nameLabel.setText(player.getName() + " (" + player.getCharacterClass() + ")");
-
-			// Calcola la percentuale della vita (cast a double per avere decimali)
-			double progress = (double) player.getHp() / player.getMaxHp();
-			hpBar.setProgress(progress);
-
-			hpTextLabel.setText(player.getHp() + "/" + player.getMaxHp());
-			coinsLabel.setText(String.valueOf(player.getCoins()));
-		}
-	}
-
 	@FXML
 	private void onMove() {
 		game.movePlayer();
-		updateUI();
 	}
 
 	@FXML
 	private void onInventory() {
 		game.showInventory();
-		updateUI();
 	}
 
 	@FXML
 	private void onStats() {
 		game.showCharacterSheet();
-		updateUI();
 	}
 
 	@FXML

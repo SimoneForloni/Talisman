@@ -33,10 +33,10 @@ public class Game {
 
   public void start() {
     logger.log("Game Started! Ready to play.");
-    showGameMenu(); // Mostra lo stato iniziale nel log
+    logPlayerStatus(); // Mostra lo stato iniziale nel log
   }
 
-  public void showGameMenu() {
+  public void logPlayerStatus() {
     Space currentSpace = board.getSpace(player);
 
     logger.log("\n" + "=".repeat(50));
@@ -44,10 +44,6 @@ public class Game {
     logger.log(String.format(" HP: %d/%d | COINS: %d | XP: %d",
         player.getHp(), player.getMaxHp(), player.getCoins(), player.getXp()));
     logger.log("=".repeat(50));
-    logger.log("1) Roll Dice & Move");
-    logger.log("2) Inventory");
-    logger.log("3) Character Stats");
-    logger.log("4) Quit Game");
   }
 
   public void movePlayer() { // Deve essere public per essere visto dal Controller
@@ -72,7 +68,7 @@ public class Game {
 
     // Controllo morte dopo l'evento (es. combattimento o trappola)
     if (!player.isAlive()) {
-      hadleGameOver();
+      handleGameOver();
     }
   }
 
@@ -97,7 +93,7 @@ public class Game {
     // In GUI qui potresti chiudere lo Stage o tornare al menu principale
   }
 
-  private void hadleGameOver() {
+  private void handleGameOver() {
     logger.log("""
         ####################################
                   G A M E   O V E R

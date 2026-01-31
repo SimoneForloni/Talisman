@@ -5,17 +5,19 @@ import java.util.Collections;
 import java.util.List;
 import game.model.inventory.*;
 import game.util.CharacterClass;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public class Player implements Combatant {
 	// Statistiche di stato
 	private String name;
 	private CharacterClass characterClass;
-	private int hp;
-	private int maxHp;
-	private int xp;
-	private int upgradePoints;
-	private int coins;
-	private int position;
+	private IntegerProperty hp = new SimpleIntegerProperty();
+	private IntegerProperty maxHp = new SimpleIntegerProperty();
+	private IntegerProperty xp = new SimpleIntegerProperty();
+	private IntegerProperty upgradePoints = new SimpleIntegerProperty();
+	private IntegerProperty coins = new SimpleIntegerProperty();
+	private IntegerProperty position = new SimpleIntegerProperty();
 
 	// Statistiche di combattimento/interazione
 	private int strength;
@@ -45,12 +47,12 @@ public class Player implements Combatant {
 	public Player(String name, CharacterClass charClass, int initialMaxHp) {
 		this.name = name;
 		this.characterClass = charClass;
-		this.maxHp = initialMaxHp;
-		this.hp = initialMaxHp;
-		this.xp = 0;
-		this.upgradePoints = 0;
-		this.coins = 0;
-		this.position = 0;
+		this.maxHp.set(initialMaxHp);
+		this.hp.set(initialMaxHp);
+		this.xp.set(0);
+		this.upgradePoints.set(0);
+		this.coins.set(0);
+		this.position.set(0);
 		this.inventory = new ArrayList<>();
 		this.spells = new ArrayList<>();
 		this.statusEffects = new ArrayList<>();
@@ -73,19 +75,19 @@ public class Player implements Combatant {
 	}
 
 	public int getHp() {
-		return hp;
+		return hp.get();
 	}
 
 	public int getMaxHp() {
-		return maxHp;
+		return maxHp.get();
 	}
 
 	public int getXp() {
-		return xp;
+		return xp.get();
 	}
 
 	public int getXpPoint() {
-		return upgradePoints;
+		return upgradePoints.get();
 	}
 
 	public int getStrength() {
@@ -119,11 +121,11 @@ public class Player implements Combatant {
 	}
 
 	public int getCoins() {
-		return coins;
+		return coins.get();
 	}
 
 	public int getPosition() {
-		return position;
+		return position.get();
 	}
 
 	public List<InventoryObject> getInventory() {
@@ -139,6 +141,30 @@ public class Player implements Combatant {
 	}
 
 	// ===========================================================
+	// PROPERTY ACCESSORS (JavaFX)
+	// ===========================================================
+
+	public IntegerProperty hpProperty() {
+		return hp;
+	}
+
+	public IntegerProperty maxHpProperty() {
+		return maxHp;
+	}
+
+	public IntegerProperty coinsProperty() {
+		return coins;
+	}
+
+	public IntegerProperty xpProperty() {
+		return xp;
+	}
+
+	public IntegerProperty positionProperty() {
+		return position;
+	}
+
+	// ===========================================================
 	// SETTER
 	// ===========================================================
 
@@ -147,19 +173,19 @@ public class Player implements Combatant {
 	}
 
 	public void setHp(int hp) {
-		this.hp = hp;
+		this.hp.set(hp);
 	}
 
 	public void setMaxHp(int maxHp) {
-		this.maxHp = maxHp;
+		this.maxHp.set(maxHp);
 	}
 
 	public void setXp(int xp) {
-		this.xp = xp;
+		this.xp.set(xp);
 	}
 
 	public void setUpgradePoints(int upgradePoints) {
-		this.upgradePoints = upgradePoints;
+		this.upgradePoints.set(upgradePoints);
 	}
 
 	public void setStrength(int strength) {
@@ -187,11 +213,11 @@ public class Player implements Combatant {
 	}
 
 	public void setCoins(int coins) {
-		this.coins = coins;
+		this.coins.set(coins);
 	}
 
 	public void setPosition(int position) {
-		this.position = position;
+		this.position.set(position);
 	}
 
 	// ===========================================================
@@ -203,7 +229,7 @@ public class Player implements Combatant {
 	}
 
 	public void heal(int healthGain) {
-		this.hp = Math.min(maxHp, this.hp + healthGain);
+		setHp(Math.min(getMaxHp(), getHp() + healthGain));
 	}
 
 	public void addItem(InventoryObject item) {
@@ -234,11 +260,11 @@ public class Player implements Combatant {
 
 	@Override
 	public void takeDamage(int damage) {
-		this.hp = Math.max(0, this.hp - damage);
+		setHp(Math.max(0, getHp() - damage));
 	}
 
 	public boolean isAlive() {
-		if (this.hp > 0) {
+		if (getHp() > 0) {
 			return true;
 		}
 		return false;
@@ -255,6 +281,7 @@ public class Player implements Combatant {
 				  CAR: %d  AGI: %d  LUK: %d
 				+--------------------------+
 				""", name, characterClass, hp, maxHp, coins,
+				getHp(), getMaxHp(), getCoins(),
 				strength, defense, intelligence, charisma, agility, luck);
 	}
 

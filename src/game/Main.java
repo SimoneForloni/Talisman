@@ -24,7 +24,11 @@ public class Main extends Application {
 			controller.initializeGame(player);
 
 			primaryStage.setTitle("Talisman RPG");
-			primaryStage.setScene(new Scene(root));
+
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/game/view/style.css").toExternalForm());
+
+			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

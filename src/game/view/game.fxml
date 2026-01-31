@@ -11,39 +11,39 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.controllers.GameController">
-   <top>
-      <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #ddd; -fx-padding: 10;">
-         <children>
-            <Label fx:id="nameLabel" text="Player Name">
-               <font><Font name="System Bold" size="14.0" /></font>
-            </Label>
-            <VBox alignment="CENTER_LEFT">
-               <children>
-                  <Label text="Health" textFill="#e40e0e">
-                     <font><Font size="10.0" /></font>
-                  </Label>
-                  <ProgressBar fx:id="hpBar" prefWidth="150.0" progress="1.0" style="-fx-accent: red;" />
-                  <Label fx:id="hpTextLabel" text="100/100" />
-               </children>
-            </VBox>
-            <Label text="Coins:" />
-            <Label fx:id="coinsLabel" text="0" textFill="#d7a200">
-               <font><Font name="System Bold" size="14.0" /></font>
-            </Label>
-         </children>
-      </HBox>
-   </top>
-   <center>
-      <TextArea fx:id="logArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" BorderPane.alignment="CENTER">
-         <font><Font name="Monospaced Regular" size="14.0" /></font>
-      </TextArea>
-   </center>
-   <bottom>
-      <HBox alignment="CENTER" spacing="15.0" style="-fx-padding: 15;" BorderPane.alignment="CENTER">
-         <Button fx:id="btnMove" onAction="#onMove" prefHeight="40.0" prefWidth="100.0" text="Roll &amp; Move" />
-         <Button fx:id="btnInventory" onAction="#onInventory" prefHeight="40.0" prefWidth="100.0" text="Inventory" />
-         <Button fx:id="btnStats" onAction="#onStats" prefHeight="40.0" prefWidth="100.0" text="Stats" />
-         <Button fx:id="btnQuit" onAction="#onQuit" prefHeight="40.0" prefWidth="100.0" text="Quit" />
-      </HBox>
-   </bottom>
+	<top>
+		<HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-padding: 10;">
+			<children>
+				<Label fx:id="nameLabel" text="Player Name">
+					<font><Font name="System Bold" size="14.0" /></font>
+				</Label>
+				<VBox alignment="CENTER_LEFT">
+					<children>
+						<Label text="Health" textFill="#e40e0e">
+							<font><Font size="10.0" /></font>
+						</Label>
+						<ProgressBar fx:id="hpBar" prefWidth="150.0" progress="1.0" style="-fx-accent: red;" />
+						<Label fx:id="hpTextLabel" text="100/100" />
+					</children>
+				</VBox>
+				<Label text="Coins:" />
+				<Label fx:id="coinsLabel" text="0" textFill="#d7a200">
+					<font><Font name="System Bold" size="14.0" /></font>
+				</Label>
+			</children>
+		</HBox>
+	</top>
+	<center>
+		<TextArea fx:id="logArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" BorderPane.alignment="CENTER">
+			<font><Font name="Monospaced Regular" size="14.0" /></font>
+		</TextArea>
+	</center>
+	<bottom>
+		<HBox alignment="CENTER" spacing="15.0" style="-fx-padding: 15;" BorderPane.alignment="CENTER">
+			<Button fx:id="btnMove" onAction="#onMove" prefHeight="40.0" prefWidth="100.0" text="Roll &amp; Move" />
+			<Button fx:id="btnInventory" onAction="#onInventory" prefHeight="40.0" prefWidth="100.0" text="Inventory" />
+			<Button fx:id="btnStats" onAction="#onStats" prefHeight="40.0" prefWidth="100.0" text="Stats" />
+			<Button fx:id="btnQuit" onAction="#onQuit" prefHeight="40.0" prefWidth="100.0" text="Quit" />
+		</HBox>
+	</bottom>
 </BorderPane>
