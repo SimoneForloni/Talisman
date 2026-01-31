@@ -8,18 +8,22 @@ import game.Deck;
 import game.model.Player;
 import game.model.board.cards.AdventureCard;
 import game.model.board.cards.CardType;
+import game.model.board.cards.EnemyCard;
 import game.service.loggers.GameLogger;
+import game.service.managers.CombatManager;
 
 public class DrawCardSpace extends Space {
 
 	private static final Random random = new Random();
 	private final Deck deck;
 	private final GameLogger logger;
+	private final CombatManager combatManager;
 
-	public DrawCardSpace(String name, String description, Deck deck, GameLogger logger) {
+	public DrawCardSpace(String name, String description, Deck deck, GameLogger logger, CombatManager combatManager) {
 		super(name, description);
 		this.deck = deck;
 		this.logger = logger;
+		this.combatManager = combatManager;
 	}
 
 	/**
@@ -57,9 +61,10 @@ public class DrawCardSpace extends Space {
 				.toList();
 
 		// Risolvi prima i combattimenti
-		for (AdventureCard enemyCard : enemies) {
-			if (player.isAlive()) {
-				enemyCard.execute(player);
+		for (AdventureCard card : enemies) {
+			if (player.isAlive() && card instanceof EnemyCard) {
+				EnemyCard enemyCard = (EnemyCard) card;
+				combatManager.startBattle(player, enemyCard.getEnemy());
 			}
 		}
 

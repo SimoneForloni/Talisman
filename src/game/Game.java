@@ -5,7 +5,7 @@ import game.model.board.Board;
 import game.model.board.spaces.Space;
 import game.service.loggers.ConsoleLogger;
 import game.service.loggers.GameLogger;
-import game.util.Constants;
+import game.service.managers.CombatManager;
 import game.util.Methods;
 
 public class Game {
@@ -13,13 +13,15 @@ public class Game {
   private final Board board;
   private final Deck deck;
   private final GameLogger logger;
+  private final CombatManager combatManager;
   private boolean isRunning;
 
   Game(Player player) {
     this.player = player;
     this.logger = new ConsoleLogger();
+    this.combatManager = new CombatManager(logger);
     this.deck = new Deck(logger);
-    this.board = new Board(deck, logger);
+    this.board = new Board(deck, logger, combatManager);
     this.isRunning = false;
   }
 
@@ -47,7 +49,7 @@ public class Game {
 
   private void showGameMenu() {
     Methods.clearScreen();
-    Space currentSpace = board.getSpace(player.getPosition());
+    Space currentSpace = board.getSpace(player);
 
     System.out.println("\n" + "=".repeat(50));
     System.out.printf(" POSITION: %d | SPACE: %s\n", player.getPosition() + 1, currentSpace.getName());
@@ -75,10 +77,10 @@ public class Game {
     int dice = (int) (Math.random() * 6) + 1;
     System.out.println("\nResult: [" + dice + "]");
 
-    int newPos = (player.getPosition() + dice) % Constants.BOARD_SIZE;
+    int newPos = board.calculateNewPosition(player.getPosition(), dice);
     player.setPosition(newPos);
 
-    Space currentSpace = board.getSpace(newPos);
+    Space currentSpace = board.getSpace(player);
 
     System.out.println("\n>>> Landed on: " + currentSpace.getName() + " <<<");
     System.out.println(currentSpace.getDescription());

@@ -42,16 +42,16 @@ public class GameManager {
 
 	private static void showMenu() {
 		System.out.println("""
-					╔════════════════════════════╗
-					║          TALISMAN          ║
-					╚════════════════════════════╝
+			╔════════════════════════════╗
+			║          TALISMAN          ║
+			╚════════════════════════════╝
 
-								1) New game
-								2) Load game
-								3) Setting
-								4) Quit
+				1) New game
+				2) Load game
+				3) Setting
+				4) Quit
 				""");
-		System.out.print("    Select a option (1-4): ");
+		System.out.print("Select a option (1-4): ");
 	}
 
 	private static Player carachterCreator() {
