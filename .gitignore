@@ -4,6 +4,7 @@ out/
 
 # --- File di configurazione dell'IDE ---
 .settings/
+.vscode/
 .classpath
 .project
 
