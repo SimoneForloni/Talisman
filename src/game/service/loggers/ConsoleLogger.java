@@ -1,4 +1,4 @@
-package game.service;
+package game.service.loggers;
 
 public class ConsoleLogger implements GameLogger {
     @Override

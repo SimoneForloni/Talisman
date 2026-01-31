@@ -6,9 +6,9 @@ import java.util.Random;
 
 import game.Deck;
 import game.model.Player;
-import game.service.GameLogger;
 import game.model.board.cards.AdventureCard;
 import game.model.board.cards.CardType;
+import game.service.loggers.GameLogger;
 
 public class DrawCardSpace extends Space {
 

@@ -6,7 +6,7 @@ import java.util.List;
 import game.Deck;
 import game.model.board.spaces.*;
 import game.service.factories.SpaceFactory;
-import game.service.GameLogger;
+import game.service.loggers.GameLogger;
 import game.util.Constants;
 
 public class Board {

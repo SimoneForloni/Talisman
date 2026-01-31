@@ -2,12 +2,12 @@ package game.service.factories;
 
 import java.util.Random;
 
-import game.service.GameLogger;
 import game.model.Player;
 import game.model.board.spaces.DrawCardSpace;
 import game.model.board.spaces.Space;
 import game.model.board.spaces.TreasureSpace;
 import game.model.board.spaces.VillageSpace;
+import game.service.loggers.GameLogger;
 
 public class SpaceFactory {
   private static final Random random = new Random();

@@ -3,8 +3,8 @@ package game;
 import game.model.Player;
 import game.model.board.Board;
 import game.model.board.spaces.Space;
-import game.service.ConsoleLogger;
-import game.service.GameLogger;
+import game.service.loggers.ConsoleLogger;
+import game.service.loggers.GameLogger;
 import game.util.Constants;
 import game.util.Methods;
 
