@@ -1,20 +1,40 @@
-## Getting Started
+# Talisman RPG (Java)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Un gioco di ruolo ispirato al classico gioco da tavolo **Talisman**, sviluppato in Java con interfaccia grafica **JavaFX**.
 
-## Folder Structure
+## 🎮 Panoramica
 
-The workspace contains two folders by default, where:
+Il giocatore esplora un tabellone circolare, affrontando mostri, raccogliendo tesori e potenziando il proprio personaggio. L'obiettivo è sopravvivere e accumulare esperienza e ricchezze.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+### Caratteristiche Principali
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- **Esplorazione**: Movimento su caselle con eventi diversi (Villaggi, Tesori, Pesca Carte).
+- **Combattimento**: Sistema a turni contro nemici generati casualmente o Boss.
+- **Progressione**: Guadagna XP, monete e oggetti per migliorare Attacco, Difesa e HP.
+- **Interfaccia**: GUI reattiva con log degli eventi, statistiche in tempo reale e inventario.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## 🚀 Per Iniziare
 
-## Dependency Management
+### Prerequisiti
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
-# Talisman
-# talisman
+- **Java JDK 25** (o versione compatibile).
+- **JavaFX SDK** configurato nel classpath.
+- **Visual Studio Code** con "Extension Pack for Java".
+
+### Esecuzione
+
+1. Apri la cartella del progetto in VS Code.
+2. Esegui la classe `game.Main`.
+
+## 📂 Struttura del Progetto
+
+Il codice sorgente si trova in `src/game` ed è organizzato secondo il pattern MVC/Service:
+
+- **`controllers/`**: Gestione degli eventi UI (`GameController`).
+- **`model/`**: Logica dei dati (`Player`, `Enemy`, `Board`, `Card`).
+- **`service/`**: Logica di business e utility (`CombatManager`, `Factories`, `Loggers`).
+- **`view/`**: File FXML per l'interfaccia grafica.
+
+## 🛠️ Sviluppo
+
+Vedi CONTEXT.md per le linee guida architetturali, le regole di stile e le istruzioni per l'AI Assistant.
