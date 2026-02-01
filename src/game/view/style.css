@@ -1,69 +1,208 @@
-/* Global Dark Theme Settings */
-.root {
-    -fx-base: #2b2b2b; /* Base color for controls */
-    -fx-background-color: #1e1e1e; /* Main background */
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+/* Layout Generale */
+.main-container {
+    -fx-pref-width: 950px;
+    -fx-pref-height: 650px;
+    -fx-base: #0a0a0c;
+    -fx-background-color: #0a0a0c;
 }
 
-/* Labels (Text) */
-.label {
-    -fx-text-fill: #e0e0e0;
-    -fx-font-size: 14px;
+.game-viewport {
+    -fx-min-height: 260px;
+    -fx-background-color: linear-gradient(to bottom, #0f172a, #1e293b);
+    -fx-border-color: rgba(45, 212, 191, 0.3);
+    -fx-border-width: 0 0 4 0;
+}
+
+.dashboard-main {
+    -fx-pref-height: 320px;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-background-color: #0a0a0c;
+}
+
+.dash-row {
+    -fx-spacing: 12px;
+}
+
+/* Pannelli e Card */
+.player-card {
+    -fx-pref-width: 180px;
+    -fx-padding: 5 10;
+    -fx-background-color: #1a1a1e;
+    -fx-background-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8;
+}
+
+.health-container {
+    -fx-padding: 0 15;
+    -fx-alignment: center-left;
+    -fx-spacing: 10px;
+    -fx-background-color: #1a1a1e;
+    -fx-background-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8;
+}
+
+.coin-container {
+    -fx-pref-width: 120px;
+    -fx-alignment: center;
+    -fx-spacing: 8px;
+    -fx-background-color: #1a1a1e;
+    -fx-background-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-radius: 8;
+}
+
+/* Statistiche e Log */
+.stat-panel {
+    -fx-pref-width: 150px;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-background-color: #111114;
+    -fx-background-radius: 12;
+    -fx-border-color: #1e293b;
+    -fx-border-radius: 12;
+}
+
+.log-panel {
+    -fx-padding: 8px;
+    -fx-spacing: 5px;
+    -fx-background-color: #111114;
+    -fx-background-radius: 12;
+    -fx-border-color: #1e293b;
+    -fx-border-radius: 12;
+}
+
+.actions-sidebar {
+    -fx-pref-width: 60px;
+    -fx-spacing: 8px;
+}
+
+/* Elementi Grafici */
+.health-bar-custom {
+    -fx-pref-width: 400px;
+    -fx-max-width: 1000px;
+}
+
+.health-bar-custom .track {
+    -fx-background-color: #334155;
+    -fx-background-radius: 4;
+}
+
+.health-bar-custom .bar {
+    -fx-background-color: linear-gradient(to right, #ef4444, #f87171);
+    -fx-background-radius: 4;
+    -fx-background-insets: 0;
+}
+
+/* Bottoni con stati interattivi */
+.icon-btn,
+.icon-btn-primary,
+.icon-btn-quit {
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    -fx-pref-width: 60px;
+    -fx-max-width: 60px;
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-background-radius: 8;
+    -fx-transition: all 0.2s;
+}
+
+.icon-btn:hover {
+    -fx-background-color: #2d2d35;
+    -fx-border-color: #475569;
+}
+
+.icon-btn:pressed {
+    -fx-background-color: #0f0f12;
+}
+
+.icon-btn-primary {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(59, 130, 246, 0.4), 10, 0, 0, 0);
 }
 
-/* Buttons */
-.button {
-    -fx-background-color: #3c3f41;
-    -fx-text-fill: #ffffff;
-    -fx-border-color: #555555;
+.icon-btn-quit {
+    -fx-background-color: #1a1a1e;
+    -fx-text-fill: #ff4b4b;
+    -fx-border-color: #334155;
+}
+
+.icon-btn-quit:hover {
+    -fx-background-color: #2a1a1e;
+    -fx-border-color: #ef4444;
+}
+
+/* Log Area Styling */
+.game-log-area {
+    -fx-pref-height: 150px;
+    -fx-font-family: "Consolas";
+    -fx-text-fill: #2dd4bf;
+    -fx-background-color: transparent;
+}
+
+.game-log-area .viewport,
+.game-log-area .content {
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar minimal */
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #334155;
+    -fx-background-radius: 5em;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+/* Utility per Label */
+.label-main-cyan {
+    -fx-text-fill: #2dd4bf;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.label-sub {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 10px;
+}
+
+.panel-title-small-center {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+    -fx-alignment: center;
+    -fx-max-width: Infinity;
+}
+
+/* Quick Commands */
+.quick-cmd-container {
+    -fx-spacing: 5px;
+}
+
+.cmd-btn-small {
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-background-color: rgba(15, 23, 42, 0.8);
+    -fx-text-fill: #94a3b8;
+    -fx-border-color: #334155;
     -fx-border-radius: 4;
     -fx-background-radius: 4;
-    -fx-padding: 8 16;
+    -fx-font-size: 10px;
     -fx-cursor: hand;
-    -fx-font-weight: bold;
 }
 
-.button:hover {
-    -fx-background-color: #505355;
-    -fx-border-color: #777777;
+.cmd-btn-small:hover {
+    -fx-text-fill: white;
+    -fx-border-color: #2dd4bf;
 }
 
-.button:pressed {
-    -fx-background-color: #2b2b2b;
-    -fx-border-color: #333333;
-}
-
-/* TextArea (Game Log) - Terminal Style */
-.text-area {
-    -fx-control-inner-background: #121212;
-    -fx-background-color: #121212;
-    -fx-text-fill: #4caf50; /* Terminal Green */
-    -fx-font-family: "Consolas", "Monospaced";
-    -fx-font-size: 13px;
-    -fx-border-color: #333333;
-    -fx-border-width: 1;
-}
-
-.text-area .content {
-    -fx-background-color: #121212;
-}
-
-/* ScrollBars (Dark) */
-.scroll-bar {
-    -fx-background-color: #1e1e1e;
-}
-.scroll-bar .thumb {
-    -fx-background-color: #444444;
-}
-
-/* ProgressBar (HP) */
-.progress-bar {
-    -fx-accent: #d32f2f; /* Red for Health */
-    -fx-control-inner-background: #2b2b2b;
-}
-
-.progress-bar .track {
-    -fx-background-color: #2b2b2b;
-    -fx-border-color: #444444;
+.version-tag {
+    -fx-text-fill: rgba(148, 163, 184, 0.5);
+    -fx-font-size: 9px;
 }

@@ -25,6 +25,14 @@ public class GameController {
 	@FXML
 	private Label nameLabel;
 
+	// Nuovi campi per le statistiche
+	@FXML
+	private ProgressBar atkBar;
+	@FXML
+	private ProgressBar defBar;
+	@FXML
+	private Label spdLabel;
+
 	@FXML
 	private Button btnMove;
 	@FXML
@@ -32,10 +40,13 @@ public class GameController {
 	@FXML
 	private Button btnStats;
 	@FXML
+	private Button btnMap;
+	@FXML
 	private Button btnQuit;
 
 	private Game game;
 	private Player player;
+	private GameLogger logger;
 
 	/**
 	 * Metodo chiamato dal Main dopo aver caricato l'FXML per inizializzare la
@@ -44,10 +55,10 @@ public class GameController {
 	public void initializeGame(Player player) {
 		this.player = player;
 		// 1. Crea il Logger che scrive sulla TextArea
-		GameLogger guiLogger = new GuiLogger(logArea);
+		this.logger = new GuiLogger(logArea);
 
 		// 2. Crea il gioco iniettando il logger grafico
-		this.game = new Game(player, guiLogger);
+		this.game = new Game(player, logger);
 
 		// 3. Data Binding: Collega le proprietà del Player alla GUI
 		nameLabel.setText(player.getName() + " (" + player.getCharacterClass() + ")");
@@ -63,28 +74,55 @@ public class GameController {
 		// Monete
 		coinsLabel.textProperty().bind(player.coinsProperty().asString());
 
+		// Inizializza le statistiche visive (Assumiamo valori base se non bindabili)
+		updateStatsUI();
+
 		// Disabilita i bottoni se il giocatore è morto (HP <= 0)
 		btnMove.disableProperty().bind(player.hpProperty().lessThanOrEqualTo(0));
 		btnInventory.disableProperty().bind(player.hpProperty().lessThanOrEqualTo(0));
 		btnStats.disableProperty().bind(player.hpProperty().lessThanOrEqualTo(0));
+		btnMap.disableProperty().bind(player.hpProperty().lessThanOrEqualTo(0));
 
 		// 4. Avvia il gioco (messaggio di benvenuto)
 		game.start();
 	}
 
+	private void updateStatsUI() {
+		// Esempio di aggiornamento visuale delle stats.
+		// Se Player ha attackProperty() potremmo usare il binding.
+		// Qui usiamo i getter standard assumendo un max di 20 per la barra.
+		if (atkBar != null)
+			atkBar.setProgress(player.getAttack() / 20.0);
+		if (defBar != null)
+			defBar.setProgress(player.getDefense() / 20.0);
+		if (spdLabel != null)
+			spdLabel.setText("1.0"); // Placeholder o player.getSpeed()
+	}
+
 	@FXML
 	private void onMove() {
 		game.movePlayer();
+		updateStatsUI(); // Aggiorna le stats dopo il movimento (es. level up o oggetti)
 	}
 
 	@FXML
 	private void onInventory() {
 		game.showInventory();
+		updateStatsUI(); // L'equipaggiamento potrebbe cambiare le stats
 	}
 
 	@FXML
 	private void onStats() {
 		game.showCharacterSheet();
+	}
+
+	@FXML
+	private void onMap() {
+		// Se Game ha un metodo showMap(), lo chiamiamo.
+		// Altrimenti usiamo il logger per feedback.
+		logger.log("--- MAPPA ---");
+		// game.showMap(); // Decommentare se implementato in Game
+		logger.log("Posizione attuale: " + player.getPosition());
 	}
 
 	@FXML
